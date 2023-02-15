@@ -8,11 +8,11 @@ pipeline {
         string(name: 'USERNAME', defaultValue: 'devil00', description: 'Username of the dockerhub')
     }
     stages {
-        stage('clone') {
-            steps {
-            checkout scmGit(branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${params.FLASK}"]], userRemoteConfigs: [[url: 'https://github.com/ipbharaj/flask-calculator.git']])
-            }
-        }
+        // stage('clone') {
+        //     steps {
+        //     checkout scmGit(branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${params.FLASK}"]], userRemoteConfigs: [[url: 'https://github.com/ipbharaj/flask-calculator.git']])
+        //     }
+        // }
         // stage('docker-build') {
         //     environment {     
         //     DOCKERHUB_CREDENTIALS= credentials('dockerlogin')     
