@@ -1,6 +1,13 @@
 pipeline {
     agent any
     stages {
+        stage('clone') {
+            steps {
+            echo "Before script" 
+            git branch: 'main', url: 'https://github.com/ipbharaj/flask-calculator.git'
+            echo "after script"
+            }
+        }
         stage('docker') {
             steps {
             echo "Before script" 
