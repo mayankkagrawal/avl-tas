@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    // parameters {
-    //     string(name: 'FLASK', defaultValue: '/subdir1', description: 'Enter a directroy name where you want to copy flask repo')
-    //     string(name: 'TASK', defaultValue: '/subdir2', description: 'Enter a directroy name where you want to copy task repo')
-    // }
     stages {
         stage('clone') {
             steps {
