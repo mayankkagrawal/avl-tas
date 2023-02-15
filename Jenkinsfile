@@ -4,6 +4,7 @@ pipeline {
         string(name: 'FLASK', defaultValue: 'subdir1', description: 'Directory where you want to clone the flask repo')
         string(name: 'TASK', defaultValue: 'subdir2', description: 'Directory where you want to clone the task repo')
         string(name: 'NAME', defaultValue: 'doc1', description: 'Name of the docker container')
+        string(name: 'IMAGE', defaultValue: 'avl-task:v1', description: 'Image of the docker container')
     }
     stages {
         stage('clone') {
@@ -22,8 +23,8 @@ pipeline {
             sh '''ls -la'''
             sh '''pwd'''
             sh "sed  -e 's/FLASK/${FLASK}/g' Dockerfile.tpl > Dockerfile"
-            sh "sudo docker build -t docker.io/avl-task:v1 ."
-            sh  "sudo docker run -dit --name '${params.NAME}' -p 5000:5000 avl-task:v1"
+            sh "sudo docker build -t docker.io/'${params.IMAGE}' ."
+            sh  "sudo docker run -dit --name '${params.NAME}' -p 5000:5000 '${params.IMAGE}'"
             echo "after script"
             }
         }
