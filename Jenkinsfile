@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('clone') {
             steps {
-            checkout scmGit(branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${params.FLASK}"]], userRemoteConfigs: [[url: 'https://github.com/ipbharaj/flask-calculator.git']])
+            checkout scmGit(branches: [[name: '*/mayank-task-8712']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${params.FLASK}"]], userRemoteConfigs: [[url: 'https://github.com/ipbharaj/flask-calculator.git']])
             }
         }
         stage('docker-build') {
@@ -21,7 +21,7 @@ pipeline {
             script{
                 env.FLASK = "${FLASK}"
             }
-            checkout scmGit(branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${params.TASK}"]], userRemoteConfigs: [[credentialsId: 'new-id', url: 'https://github.com/mayankkagrawal/avl-task.git']])
+            checkout scmGit(branches: [[name: '*/mayank-task-8712']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${params.TASK}"]], userRemoteConfigs: [[credentialsId: 'new-id', url: 'https://github.com/mayankkagrawal/avl-task.git']])
             sh "sed  -e 's/FLASK/${FLASK}/g' Dockerfile.tpl > Dockerfile"
             sh "docker build -t docker.io/'${params.IMAGE}' ."
             sh "docker tag docker.io/'${params.IMAGE}' docker.io/'${params.USERNAME}'/'${params.IMAGE}'"
