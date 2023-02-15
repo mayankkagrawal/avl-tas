@@ -5,6 +5,7 @@ pipeline {
         string(name: 'TASK', defaultValue: 'subdir2', description: 'Directory where you want to clone the task repo')
         string(name: 'NAME', defaultValue: 'doc1', description: 'Name of the docker container')
         string(name: 'IMAGE', defaultValue: 'avl-task:v1', description: 'Image of the docker container')
+        string(name: 'USERNAME', defaultValue: 'devil00', description: 'Username of the dockerhub')
     }
     stages {
         stage('clone') {
@@ -20,6 +21,8 @@ pipeline {
             checkout scmGit(branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${params.TASK}"]], userRemoteConfigs: [[credentialsId: 'new-id', url: 'https://github.com/mayankkagrawal/avl-task.git']])
             sh "sed  -e 's/FLASK/${FLASK}/g' Dockerfile.tpl > Dockerfile"
             sh "docker build -t docker.io/'${params.IMAGE}' ."
+            sh "docker tag docker.io/'${params.IMAGE}' docker.io/'${USERNAME}'/'${params.IMAGE}'"
+            sh "docker push docker.io/'${USERNAME}'/'${params.IMAGE}'"
             }
         }
         stage('docker-run') {
