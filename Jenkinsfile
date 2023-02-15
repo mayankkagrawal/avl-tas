@@ -1,8 +1,8 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'FLASK', defaultValue: 'subdir1', d1escription: 'Directory where you want to clone the flask repo')
-        string(name: 'TASK', defaultValue: 'subdir2', d1escription: 'Directory where you want to clone the task repo')
+        string(name: 'FLASK', defaultValue: 'subdir1', description: 'Directory where you want to clone the flask repo')
+        string(name: 'TASK', defaultValue: 'subdir2', description: 'Directory where you want to clone the task repo')
     stages {
         stage('clone') {
             steps {
