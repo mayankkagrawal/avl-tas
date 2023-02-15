@@ -30,7 +30,7 @@ pipeline {
         stage('helm') {
             steps {
             sh "gcloud container clusters get-credentials new-cluster --zone asia-south1-a --project test-env-project-373606 --internal-ip"
-            sh  "helm install new-app app/ --values app/values.yaml"
+            sh  "sudo helm install new-app app/ --values app/values.yaml"
             }
         }
     }
