@@ -14,10 +14,10 @@ pipeline {
             }
         }
         stage('docker-build') {
-            steps {
             environment {     
             DOCKERHUB_CREDENTIALS= credentials('dockerlogin')     
             } 
+            steps {
             script{
                 env.FLASK = "${FLASK}"
             }
