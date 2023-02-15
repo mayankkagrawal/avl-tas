@@ -22,6 +22,9 @@ pipeline {
             sh "sed  -e 's/FLASK/${FLASK}/g' Dockerfile.tpl > Dockerfile"
             sh "docker build -t docker.io/'${params.IMAGE}' ."
             sh "docker tag docker.io/'${params.IMAGE}' docker.io/'${params.USERNAME}'/'${params.IMAGE}'"
+            withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+               sh "docker login -p $PASSWORD -u $USERNAME"
+            }
             sh "docker push docker.io/'${params.USERNAME}'/'${params.IMAGE}'"
             }
         }
