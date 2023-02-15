@@ -5,10 +5,10 @@
 replicaCount: 3
 
 image:
-  repository: docker.io/devil00/avl-task:v1
+  repository: docker.io/devil00/avl-task
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "v1"
 
 imagePullSecrets: []
 nameOverride: ""
