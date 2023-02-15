@@ -18,7 +18,7 @@ pipeline {
             script{
                 env.FLASK = "${FLASK}"
             }
-            echo "Before script" 
+            echo "${FLASK}" 
             checkout scmGit(branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${params.TASK}"]], userRemoteConfigs: [[credentialsId: 'new-id', url: 'https://github.com/mayankkagrawal/avl-task.git']])
             sh '''ls -la'''
             sh '''pwd'''
