@@ -35,11 +35,11 @@ pipeline {
             sh  "docker run -dit --name '${params.NAME}' -p 5000:5000 '${params.IMAGE}'"
             }
         }
-        stage('helm') {
-            steps {
-            sh "gcloud container clusters get-credentials new-cluster --zone asia-south1-a --project test-env-project-373606 --internal-ip"
-            sh  "helm install new-app app/ --values app/values.yaml"
-            }
-        }
+        // stage('helm') {
+        //     steps {
+        //     sh "gcloud container clusters get-credentials new-cluster --zone asia-south1-a --project test-env-project-373606 --internal-ip"
+        //     sh  "helm install new-app app/ --values app/values.yaml"
+        //     }
+        // }
     }
 }
