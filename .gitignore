@@ -1,0 +1,23 @@
+#  * Copyright 2022 Google LLC. 
+#  * 
+#  * This software is provided as-is, without warranty or representation for any use or purpose. 
+#  * Your use of it is subject to your agreement with Google.
+
+
+alpha/ansible/private-pub-keys/*
+notes
+alpha/Docker/nodejs/api
+alpha/Docker/nodejs/sso
+alpha/Docker/nodejs/ui
+alpha/Docker/nodejs/clib
+alpha/Docker/nodejs/g101
+*.dec
+*.tfstate
+*.idea
+*.tfstate*
+*.terraform*
+terraform/.terraform
+terraform/vault-password.txt
+*.DS_Store
+*setup.py
+*cutomer-folder-delete.sh
