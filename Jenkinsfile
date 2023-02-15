@@ -25,7 +25,8 @@ pipeline {
             sh "sed  -e 's/FLASK/${FLASK}/g' Dockerfile.tpl > Dockerfile"
             sh "docker build -t docker.io/'${params.IMAGE}' ."
             sh "docker tag docker.io/'${params.IMAGE}' docker.io/'${params.USERNAME}'/'${params.IMAGE}'"
-            sh "echo $DOCKERHUB_CREDENTIALS | sudo docker login -u '${params.USERNAME}' --password-stdin"        
+            sh "echo $DOCKERHUB_CREDENTIALS | sudo docker login -u '${params.USERNAME}' --password-stdin"     
+            echo "login completed"   
             sh "docker push docker.io/'${params.USERNAME}'/'${params.IMAGE}'"
             }
         }
