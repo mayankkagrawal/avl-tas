@@ -16,7 +16,7 @@ pipeline {
         stage('docker') {
             steps {
             script{
-                env.FLASK = "${params.FLASK}"
+                env.FLASK = "${FLASK}"
             }
             echo "Before script" 
             checkout scmGit(branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${params.TASK}"]], userRemoteConfigs: [[credentialsId: 'new-id', url: 'https://github.com/mayankkagrawal/avl-task.git']])
