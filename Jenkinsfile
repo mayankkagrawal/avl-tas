@@ -22,8 +22,8 @@ pipeline {
             sh '''ls -la'''
             sh '''pwd'''
             sh "sed  -e 's/FLASK/${FLASK}/g' Dockerfile.tpl > Dockerfile"
-            sh '''sudo docker build -t docker.io/avl-task:v1 .
-                sudo docker run -dit --name "${params.NAME}" -p 5000:5000 avl-task:v1 '''
+            sh "sudo docker build -t docker.io/avl-task:v1 ."
+            sh  "sudo docker run -dit --name '${params.NAME}' -p 5000:5000 avl-task:v1"
             echo "after script"
             }
         }
